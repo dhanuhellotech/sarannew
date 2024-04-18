@@ -1,0 +1,25 @@
+@media (max-width: 770px) {
+   .cart{
+     /* font-size: clamp(14px, 2vw, 20px);  */
+     height: 20px; 
+   }
+   .cardes{
+     /* font-size: clamp(11px, 2vw, 16px);  */
+     height: 200px;
+   }
+ 
+ 
+}
+
+@media (max-width: 1024px) {
+   .cart{
+     font-size: 14px;
+     height: 200px; 
+   }
+   .cardes{
+     font-size: 12px;
+     height: fit-content;
+   }
+ 
+ 
+}
