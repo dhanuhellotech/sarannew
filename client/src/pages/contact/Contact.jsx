@@ -100,7 +100,7 @@ export default function Contact() {
               <div className="col-lg-6">
                 <fieldset>
                   <label htmlFor="phoneNumber">phoneNumber</label>
-                  <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} id="phoneNumber" pattern="[^ @]*@[^ @]*" placeholder="Your phone.." required />
+                  <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} id="phoneNumber"  placeholder="Your phone.." required />
                 </fieldset>
               </div>
               <div className="col-lg-6">

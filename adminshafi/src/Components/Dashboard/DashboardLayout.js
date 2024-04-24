@@ -9,8 +9,7 @@ import {useSelector,useDispatch} from "react-redux"
 import { openMenu,closeMenu } from "../Redux/MenuSlice";
 
 import Loader from "../../Loader.js";
-
-
+const LazyPackage = lazy(()=> import("../ProtectedRoutes/packages/Package.jsx"))
 const LazyVehicle = lazy(()=> import("../ProtectedRoutes/Vechicle/Vechicleadmin.jsx"))
 
 const LazyTour = lazy(()=> import("../ProtectedRoutes/tourform/Tour.jsx"))
@@ -33,7 +32,7 @@ const DashboardLayout = ({ children,showMenu}) => {
         sm={0}
         sx={{
           display: { xs: displayData ? "block" : "none", sm: "none" },
-          backgroundColor: "#4D0366",
+          backgroundColor: "#0D2259",
           height: "100vh",
           overflowY:"scroll",
           py:3,
@@ -51,7 +50,7 @@ const DashboardLayout = ({ children,showMenu}) => {
         sm={3}
         lg={2}
         sx={{
-          backgroundColor: "#4D0366",
+          backgroundColor: "#0D2259",
           height: "100vh",
           overflowY:"scroll",
           py:3,
@@ -90,6 +89,15 @@ const DashboardLayout = ({ children,showMenu}) => {
     element={
       <Suspense fallback={<Loader open={true} />}>
         <LazyTour />
+      </Suspense>
+    }
+  />
+  
+  <Route
+    path="/package"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <LazyPackage />
       </Suspense>
     }
   />

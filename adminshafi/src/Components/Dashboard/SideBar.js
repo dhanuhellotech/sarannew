@@ -59,13 +59,14 @@ const logout = () => {
 <ButtonLink path="/tour" text="TourForm"/>
 <ButtonLink path="/vehicle" text="VehicleForm"/>
 <ButtonLink path="/contact" text="Contact"/>
+<ButtonLink path="/package" text="Package"/>
            <button 
   onClick={logout}
         style={{ 
           display: 'block', 
           margin: 'auto', 
           color: 'black', // Change text color
-          backgroundColor: 'white', // Change background color
+          backgroundColor: '#FBBC23', // Change background color
           borderRadius: '5px', // Add rounded corners
           padding: '10px 20px', // Add padding
           border: 'none', // Remove border

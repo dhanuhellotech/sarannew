@@ -4,13 +4,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const contactRoutes = require('./Router/contactRoutes');
+const packageRoutes  = require('./Router/packageRouter');
 const vehicleRouter = require('./Router/vehicleRouter');
 const tourFormRoutes = require('./Router/tourFormRoutes'); // Adjusted import path
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+app.get('/', (req, res) => {
+  res.send('Hello World!'); // Example route
+});
 // Middleware
 app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(bodyParser.json()); // Parse incoming request bodies in a middleware
@@ -24,6 +27,7 @@ app.use((err, req, res, next) => {
 app.use('/tourform', tourFormRoutes);
 app.use('/vecform', vehicleRouter);
 app.use('/contacts', contactRoutes);
+app.use('/package', packageRoutes);
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://dhanalakshmihellotech:SIsXafSMfzzbw46A@saran.9hvu8ly.mongodb.net/saran", {
   useNewUrlParser: true,

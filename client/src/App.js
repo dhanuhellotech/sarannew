@@ -3,7 +3,7 @@ import './App.css';
 import Home from './pages/home/Home';
 import { Routes, Route } from 'react-router-dom';
 import Contact from './pages/contact/Contact';
-import Tour from './pages/home/Tour';
+import Tour from './pages/tour/Tour';
 import Service from './pages/services/Service';
 import About from './pages/about/About';
 import NotFoundPage from './components/customhooks/common/NotFoundpage';
