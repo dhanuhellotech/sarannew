@@ -9,5 +9,5 @@ router.get('/', packageController.getAllPackages);
 router.put('/:id', packageController.uploadImage, packageController.resizeImage, packageController.addImagetoCloud, packageController.updatePackage);
 router.post('/', packageController.uploadImage, packageController.resizeImage, packageController.addImagetoCloud, packageController.createPackage);
 router.delete('/:id', packageController.deletePackage);
-
+router.get('/:id', packageController.getPackageById);
 module.exports = router;

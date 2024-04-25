@@ -62,7 +62,7 @@ const addImagetoCloud = async (req, res, next) => {
 
 const createPackage = async (req, res) => {
     try {
-      const { name, stars, price, description, briefDescription } = req.body;
+      const { name, stars, price, description, briefDescription,category } = req.body;
   
       let newPackageData = {
         name,
@@ -70,6 +70,8 @@ const createPackage = async (req, res) => {
         price,
         description,
         briefDescription,
+        category,
+        image: req.result.secure_url,
       };
   
       if (req.result) {
@@ -87,42 +89,56 @@ const createPackage = async (req, res) => {
   };
   
 
-const updatePackage = async (req, res) => {
-  try {
-    const packageId = req.params.id;
-    const { name, stars, price, description, briefDescription } = req.body;
-
-    if (!name || !stars || !price || !description || !briefDescription) {
-      return res.status(400).json({ message: 'All fields are required for updating a package' });
+  const updatePackage = async (req, res) => {
+    try {
+      const packageId = req.params.id;
+      const { name, stars, price, description, briefDescription,category } = req.body;
+  
+      if (!name || !stars || !price || !description || !briefDescription || !category) {
+        return res.status(400).json({ message: 'All fields are required for updating a package' });
+      }
+  
+      let updatedPackageData = {
+        name,
+        stars,
+        price,
+        description,
+        briefDescription,
+        category
+      };
+  
+      if (req.result) {
+        updatedPackageData.image = req.result.secure_url ? req.result.secure_url : undefined;
+        updatedPackageData.imageUrl = req.result.secure_url ? req.result.secure_url : undefined; // Update imageUrl field
+      }
+  
+      const updatedPackage = await Package.findByIdAndUpdate(
+        packageId,
+        updatedPackageData,
+        { new: true }
+      );
+  
+      if (!updatedPackage) {
+        return res.status(404).json({ message: 'Package not found' });
+      }
+      res.json(updatedPackage);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
-
-    let updatedPackageData = {
-      name,
-      stars,
-      price,
-      description,
-      briefDescription,
-    };
-
-    if (req.result) {
-      updatedPackageData.image = req.result.secure_url ? req.result.secure_url : undefined;
+  };
+  
+  const getPackageById = async (req, res) => {
+    try {
+      const packageId = req.params.id;
+      const package = await Package.findById(packageId);
+      if (!package) {
+        return res.status(404).json({ message: 'Package not found' });
+      }
+      res.json(package);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-
-    const updatedPackage = await Package.findByIdAndUpdate(
-      packageId,
-      updatedPackageData,
-      { new: true }
-    );
-
-    if (!updatedPackage) {
-      return res.status(404).json({ message: 'Package not found' });
-    }
-    res.json(updatedPackage);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
+  };
 const deletePackage = async (req, res) => {
   try {
     const packageId = req.params.id;
@@ -143,5 +159,6 @@ module.exports = {
   deletePackage,
   uploadImage,
   resizeImage,
-  addImagetoCloud
+  addImagetoCloud,
+  getPackageById,
 };

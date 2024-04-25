@@ -10,6 +10,7 @@ export default function Packages() {
   const [briefDescription, setBriefDescription] = useState('');
   const [file, setFile] = useState(null);
   const [packages, setPackages] = useState([]);
+  const [category, setCategory] = useState('');
   const [editingPackage, setEditingPackage] = useState(null);
   const MAX_DESCRIPTION_LENGTH = 200;
   const MAX_BRIEF_DESCRIPTION_LENGTH = 200;
@@ -19,11 +20,14 @@ export default function Packages() {
   };
   const handleFormSubmit = async () => {
     try {
-      if (!editingPackage && (!name || !stars || !price || !description || !briefDescription || !file)) {
-        Swal.fire('Error', 'Please fill all the fields', 'error');
-        return;
+      if (!editingPackage) {
+        // Check if all required fields are filled
+        if (!name || !stars || !price || !description || !briefDescription || !file) {
+          Swal.fire('Error', 'Please fill all the fields', 'error');
+          return;
+        }
       }
-  
+    
       // Check if description exceeds 200 words
       const descriptionWordCount = description.split(/\s+/).length;
       if (descriptionWordCount > MAX_DESCRIPTION_LENGTH) {
@@ -34,7 +38,7 @@ export default function Packages() {
         });
         return;
       }
-  
+    
       // Check if brief description exceeds 200 words
       const briefDescriptionWordCount = briefDescription.split(/\s+/).length;
       if (briefDescriptionWordCount > MAX_BRIEF_DESCRIPTION_LENGTH) {
@@ -45,24 +49,25 @@ export default function Packages() {
         });
         return;
       }
-  
+    
       const requestData = new FormData();
       requestData.append('name', name);
       requestData.append('stars', stars);
       requestData.append('price', price);
       requestData.append('description', description);
       requestData.append('briefDescription', briefDescription);
+      requestData.append('category', category);
       if (file) {
         requestData.append('image', file);
       }
-  
+    
       if (editingPackage) {
         await client.put(`/package/${editingPackage._id}`, requestData);
         setEditingPackage(null);
       } else {
         await client.post('/package', requestData);
       }
-  
+    
       clearForm();
       fetchPackages();
     } catch (error) {
@@ -73,6 +78,7 @@ export default function Packages() {
     }
   };
   
+  
 
   const handleEdit = (pkg) => {
     setName(pkg.name);
@@ -80,6 +86,7 @@ export default function Packages() {
     setPrice(pkg.price);
     setDescription(pkg.description);
     setBriefDescription(pkg.briefDescription);
+    setCategory(pkg.category);
     setEditingPackage(pkg);
   };
 
@@ -214,6 +221,15 @@ export default function Packages() {
                       onChange={handleFileChange}
                     />
                   </div>
+                  <div className="col-md-6   mt-4">
+                    <select className="form-select" value={category} onChange={(e) => setCategory(e.target.value)}>
+                      <option value="">Select Category</option>
+                      <option value="North Indian">North Indian</option>
+                      <option value="South Indian">South Indian</option>
+                      <option value="Group Tours">Group Tours</option>
+                      <option value="Honeymoon Tours">Honeymoon Tours</option>
+                    </select>
+                  </div>
                   <div className="col-md-12">
                     {editingPackage ? (
                       <button
@@ -248,8 +264,10 @@ export default function Packages() {
                       className="card-img-top"
                       alt={pkg.name}
                     />
+             
                     <div className="card-body">
                       <h5 className="card-title">{pkg.name}</h5>
+                      <p className="card-text">{pkg.category}</p>
                       <p className="card-text" style={{display:readArray[index]?"block":"none"}}>{truncateDescription(pkg.description, 20)}</p>
                       <button  style={{ backgroundColor: '#0D2259',margin:'10px',color:'white' }} onClick={()=>handleRead(index)}>{readArray[index]?'Hide Description':'Show description'}</button>
 
@@ -257,6 +275,7 @@ export default function Packages() {
                       <button  style={{ backgroundColor: '#0D2259',margin:'10px',color:'white' }} onClick={()=>handleRead(index)}>{readArray[index]?'Hide Brief  Description':'Show Brief description'}</button>
 
                       <p className="card-text">{pkg.stars} Stars</p>
+                    
                       <p className="card-text">${pkg.price}</p>
                       <button
                         className="btn btn-info"

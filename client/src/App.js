@@ -7,6 +7,7 @@ import Tour from './pages/tour/Tour';
 import Service from './pages/services/Service';
 import About from './pages/about/About';
 import NotFoundPage from './components/customhooks/common/NotFoundpage';
+import PackageDet from './pages/package/PackageDet';
 function App() {
   // Define an array of route objects
   const routes = [
@@ -14,7 +15,8 @@ function App() {
     { path: '/contact', element: <Contact /> },
     { path: '/tour', element: <Tour /> },
     { path: '/service', element: <Service /> },
-    { path: '/about', element: <About /> }
+    { path: '/about', element: <About /> },
+    { path: '/package/:packageId', element: <PackageDet /> }
   ];
 
   return (

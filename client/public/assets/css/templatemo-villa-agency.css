@@ -284,7 +284,7 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #f35525;
+  background-color: #FBBC23;
   color: #fff;
 }
 
@@ -1247,6 +1247,7 @@ Properties Style
 
 .properties .item h4 a {
   color: #1e1e1e;
+  cursor: pointer;
 }
 
 .properties .item ul li {
@@ -1499,7 +1500,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a.is_active {
-  background-color: #f35525;
+  background-color: #FBBC23;
   color: #fff;
 }
 
@@ -1508,7 +1509,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a:hover {
-  color: #f35525;
+  color: #FBBC23;
 }
 
 .properties ul.pagination {

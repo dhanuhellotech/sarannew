@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const contactRoutes = require('./Router/contactRoutes');
+const packageDetailRoutes = require('./Router/packageDetailsRouter')
 const packageRoutes  = require('./Router/packageRouter');
 const vehicleRouter = require('./Router/vehicleRouter');
 const tourFormRoutes = require('./Router/tourFormRoutes'); // Adjusted import path
@@ -28,6 +29,7 @@ app.use('/tourform', tourFormRoutes);
 app.use('/vecform', vehicleRouter);
 app.use('/contacts', contactRoutes);
 app.use('/package', packageRoutes);
+app.use('/packagedetail', packageDetailRoutes);
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://dhanalakshmihellotech:SIsXafSMfzzbw46A@saran.9hvu8ly.mongodb.net/saran", {
   useNewUrlParser: true,
