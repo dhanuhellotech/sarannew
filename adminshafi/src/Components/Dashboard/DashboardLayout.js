@@ -11,7 +11,7 @@ import { openMenu,closeMenu } from "../Redux/MenuSlice";
 import Loader from "../../Loader.js";
 const LazyPackage = lazy(()=> import("../ProtectedRoutes/packages/Package.jsx"))
 const LazyVehicle = lazy(()=> import("../ProtectedRoutes/Vechicle/Vechicleadmin.jsx"))
-
+const LazyPackageDetail = lazy(()=>import ("../ProtectedRoutes/detailpackage/PackageDetail.jsx"))
 const LazyTour = lazy(()=> import("../ProtectedRoutes/tourform/Tour.jsx"))
 const LazyContact = lazy(()=>import("../ProtectedRoutes/contact/Contact.jsx"))
 const DashboardLayout = ({ children,showMenu}) => {
@@ -114,6 +114,14 @@ const DashboardLayout = ({ children,showMenu}) => {
     element={
       <Suspense fallback={<Loader open={true} />}>
         <LazyContact />
+      </Suspense>
+    }
+  />
+      <Route
+    path="/packagedetail"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <LazyPackageDetail />
       </Suspense>
     }
   />

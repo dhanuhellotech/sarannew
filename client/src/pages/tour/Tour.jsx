@@ -134,7 +134,7 @@ export default function Tour() {
           )}
         </div>
       </div>
-<Footer/>
+
     </div>
   );
 }

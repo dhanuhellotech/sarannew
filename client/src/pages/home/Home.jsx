@@ -10,6 +10,8 @@ import Video from '../../components/customhooks/common/Home/video/Video'
 import About from '../../components/customhooks/common/Home/about/About'
 import Caro from '../../components/customhooks/common/Home/caro/Caro'
 import Loader from '../../components/customhooks/common/loader/Loader'
+import WhatsApp from '../../components/whatsapp/WhatsApp'
+
 export default function Home() {
     useScript('vendor/jquery/jquery.min.js')
     useScript('vendor/bootstrap/js/bootstrap.min.js')
@@ -30,7 +32,8 @@ export default function Home() {
 <Tourser/>
 <Tours/>
 
-<Footer/>
+
+{/* <WhatsApp phoneNumber="95629 52223" message="Hello! I'm interested in your services." /> */}
 
 </div>
 

@@ -5,10 +5,7 @@ const packageDetailsSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
-    type: String,
-    required: true
-  },
+
   imageUrl: {
     type: String,
     required: true
@@ -21,21 +18,15 @@ const packageDetailsSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  daysWithDescription: [{
-    day: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    }
+  days: [{
+    dayNumber: { type: Number, required: true },
+    description: { type: String, required: true }
   }],
   includes: {
     type: String,
     required: false
   },
-  excludes: {
+  excludes: { 
     type: String,
     required: false
   },

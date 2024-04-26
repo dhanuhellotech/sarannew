@@ -87,7 +87,7 @@ nav,
 section,
 article,
 aside,
-footer,
+
 figcaption {
   margin: 0;
   padding: 0;
@@ -140,7 +140,7 @@ nav,
 section,
 article,
 aside,
-footer,
+
 hgroup {
   display: block;
 }
@@ -1403,7 +1403,7 @@ Footer Style
 --------------------------------------------- 
 */
 
-footer.footer-no-gap {
+/* footer.footer-no-gap {
   margin-top: 0px;
 }
 
@@ -1430,7 +1430,7 @@ footer p a {
 
 footer p a:hover {
   opacity: 0.75;
-}
+} */
 
 /* 
 ---------------------------------------------
@@ -1887,3 +1887,4 @@ body {
   }
 }
 /* pacific */
+/* body{margin-top:20px;} */
