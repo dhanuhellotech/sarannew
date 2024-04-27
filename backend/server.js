@@ -7,7 +7,10 @@ const contactRoutes = require('./Router/contactRoutes');
 const packageDetailRoutes = require('./Router/packageDetailsRouter')
 const packageRoutes  = require('./Router/packageRouter');
 const vehicleRouter = require('./Router/vehicleRouter');
-const tourFormRoutes = require('./Router/tourFormRoutes'); // Adjusted import path
+const tourFormRoutes = require('./Router/tourFormRoutes');
+const serviceRoutes = require('./Router/serviceRouter')
+
+ // Adjusted import path
 require('dotenv').config();
 
 const app = express();
@@ -30,6 +33,7 @@ app.use('/vecform', vehicleRouter);
 app.use('/contacts', contactRoutes);
 app.use('/package', packageRoutes);
 app.use('/packagedetail', packageDetailRoutes);
+app.use('/services', serviceRoutes);
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://dhanalakshmihellotech:SIsXafSMfzzbw46A@saran.9hvu8ly.mongodb.net/saran", {
   useNewUrlParser: true,

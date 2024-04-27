@@ -61,6 +61,7 @@ const logout = () => {
 <ButtonLink path="/contact" text="Contact"/>
 <ButtonLink path="/package" text="Package"/>
 <ButtonLink path="/packagedetail" text="PackageDetail"/>
+<ButtonLink path="/service" text="Service"/>
            <button 
   onClick={logout}
         style={{ 

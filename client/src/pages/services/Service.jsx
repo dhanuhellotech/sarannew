@@ -20,7 +20,7 @@ export default function Service() {
     </div>
   </div>
   {/* END nav */}
-
+{/* 
   <section className="ftco-section ftco-no-pb">
     <div className="container">
       <div className="row">
@@ -94,7 +94,7 @@ export default function Service() {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   <section className="ftco-section">
     <div className="container">
       <div className="row">

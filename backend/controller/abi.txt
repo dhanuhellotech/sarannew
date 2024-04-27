@@ -1,0 +1,51 @@
+const updateService = async (req, res) => {
+    try {
+      console.log('Request body:', req.body);
+      console.log('Request params:', req.params);
+  
+      const serviceId = req.params.id;
+      console.log('Service ID:', serviceId);
+  
+      const { serviceName, image, servicePrice, description, briefDescription, category } = req.body;
+  
+      // Check if any required field is missing in the request body
+      if (!serviceName || !servicePrice || !description || !briefDescription || !category) {
+        return res.status(400).json({ message: 'All fields are required for updating a service' });
+      }
+  
+      let updatedServiceData = {
+        serviceName,
+        servicePrice,
+        description,
+        briefDescription,
+        category
+      };
+  
+      // If image is provided in the request body, update it
+      if (image) {
+        updatedServiceData.image = image;
+      }
+  
+      // Optionally, if you're updating the category too:
+      // updatedServiceData.category = category;
+  
+      // Update the service in the database
+      const updatedService = await Service.findOneAndUpdate(
+        { 'services._id': serviceId }, // Target the specific service within the 'services' array
+        { $set: { 'services.$': updatedServiceData } },
+        { new: true }
+      );
+  
+      console.log('Updated service:', updatedService);
+  
+      if (!updatedService) {
+        console.log('Service not found');
+        return res.status(404).json({ message: 'Service not found' });
+      }
+  
+      res.json(updatedService);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: error.message });
+    }
+  }

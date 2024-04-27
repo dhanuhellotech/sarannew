@@ -1,0 +1,21 @@
+const addVacancyToCompany = async (req, res) => {
+  const id = req.params.id;
+  const vac_array = req.body.vacancies;
+  let updatedCompany;
+  try {
+    updatedCompany = await model.findByIdAndUpdate(
+      id,
+      {
+        $push: { vacancies: { $each: vac_array } },
+      },
+      { new: true }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+  if (!updatedCompany) {
+    return res.status(404).json({ message: "Adding vacancies Failed" });
+  } else {
+    return res.status(200).json(updatedCompany);
+  }
+};
