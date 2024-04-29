@@ -40,7 +40,7 @@ const addImagetoCloud = async (req, res, next) => {
     }
 
     req.result = result;
-    
+
     req.publicId = result.public_id; // Assign the public_id property to req.publicId
     next();
   } catch (err) {
@@ -121,8 +121,18 @@ const updatePackageDetails = async (req, res) => {
       updatedPackageDetailsData.services = services;
     }
 
-    if (req.result) {
-      updatedPackageDetailsData.imageUrl = req.result.secure_url ? req.result.secure_url : undefined;
+    // Upload image to Cloudinary if exists
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: "packages" // Make sure the folder parameter is set to "packages"
+      });
+
+      if (!result || !result.secure_url) {
+        throw new Error("Invalid result object or missing secure_url");
+      }
+
+      updatedPackageDetailsData.imageUrl = result.secure_url;
+      updatedPackageDetailsData.publicId = result.public_id; // Optionally, you can store the public_id for deletion
     }
 
     const updatedPackageDetails = await PackageDetails.findByIdAndUpdate(
@@ -136,6 +146,7 @@ const updatePackageDetails = async (req, res) => {
     }
     res.json(updatedPackageDetails);
   } catch (error) {
+    console.error('Error updating package details:', error);
     res.status(400).json({ message: error.message });
   }
 };

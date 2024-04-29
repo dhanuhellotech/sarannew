@@ -120,6 +120,7 @@ const DashboardLayout = ({ children,showMenu}) => {
     }
   />
       <Route
+      
     path="/packagedetail"
     element={
       <Suspense fallback={<Loader open={true} />}>
