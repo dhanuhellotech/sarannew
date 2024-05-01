@@ -14,7 +14,7 @@ export default function Address() {
     fetchUsers();
   }, []);
 const fetchUsers = () => {
-  client.get('/user')
+  client.get('/topcontact')
     .then(response => {
       if (Array.isArray(response.data)) {
         setUsers(response.data);
@@ -42,7 +42,7 @@ const handleDelete = async (userId) => {
     });
 
     if (result.isConfirmed) {
-      await client.delete(`/user/users/${userId}`);
+      await client.delete(`/topcontact/users/${userId}`);
       await Swal.fire('Deleted!', 'User data has been deleted.', 'success');
       fetchUsers();
     } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -65,10 +65,10 @@ const handleDelete = async (userId) => {
     
       const newUser = { phoneNumber, email, address };
       if (editingUserId) {
-        await client.put(`/user/users/${editingUserId}`, newUser);
+        await client.put(`/topcontact/users/${editingUserId}`, newUser);
         setEditingUserId(null);
       } else {
-        await client.post('/user/users', newUser);
+        await client.post('/topcontact/users', newUser);
       }
       clearForm();
       fetchUsers();

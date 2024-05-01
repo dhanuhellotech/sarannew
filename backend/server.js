@@ -9,7 +9,7 @@ const packageRoutes  = require('./Router/packageRouter');
 const vehicleRouter = require('./Router/vehicleRouter');
 const tourFormRoutes = require('./Router/tourFormRoutes');
 const serviceRoutes = require('./Router/serviceRouter')
-
+const TopcontactRoutes = require('./Router/TopcontactRouter')
  // Adjusted import path
 require('dotenv').config();
 
@@ -34,6 +34,7 @@ app.use('/contacts', contactRoutes);
 app.use('/package', packageRoutes);
 app.use('/packagedetail', packageDetailRoutes);
 app.use('/services', serviceRoutes);
+app.use('/topcontact', TopcontactRoutes)
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://dhanalakshmihellotech:SIsXafSMfzzbw46A@saran.9hvu8ly.mongodb.net/saran", {
   useNewUrlParser: true,

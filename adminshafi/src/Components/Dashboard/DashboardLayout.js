@@ -9,7 +9,7 @@ import {useSelector,useDispatch} from "react-redux"
 import { openMenu,closeMenu } from "../Redux/MenuSlice";
 
 import Loader from "../../Loader.js";
-
+const LazyAddress = lazy(()=>import("../ProtectedRoutes/address/Address.jsx"))
 const LazyService = lazy(()=>import("../ProtectedRoutes/services/Service.jsx"))
 const LazyPackage = lazy(()=> import("../ProtectedRoutes/packages/Package.jsx"))
 const LazyVehicle = lazy(()=> import("../ProtectedRoutes/Vechicle/Vechicleadmin.jsx"))
@@ -133,6 +133,14 @@ const DashboardLayout = ({ children,showMenu}) => {
     element={
       <Suspense fallback={<Loader open={true} />}>
         <LazyService />
+      </Suspense>
+    }
+  />
+     <Route
+    path="/address"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <LazyAddress />
       </Suspense>
     }
   />

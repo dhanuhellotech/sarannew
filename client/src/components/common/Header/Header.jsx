@@ -1,6 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useScript } from '../../customhooks/Script'
 export default function Header() {
+  
+  useScript('vendor/jquery/jquery.min.js')
+  useScript('vendor/bootstrap/js/bootstrap.min.js')
+  useScript('assets/js/isotope.min.js')
+  useScript('assets/js/owl-carousel.js')
+  useScript('assets/js/counter.js')
+  useScript('assets/js/custom.js')
   return (
     <div>
         <div className="sub-header">

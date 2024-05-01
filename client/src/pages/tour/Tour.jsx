@@ -4,7 +4,7 @@ import Header from '../../components/customhooks/common/Header/Header';
 import { client } from '../../components/clientaxios/Client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-
+import { useScript } from '../../components/customhooks/Script';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../../components/common/footer/Footer'
 export default function Tour() {
@@ -54,7 +54,12 @@ export default function Tour() {
       setLoading(false); // Set loading state to false if an error occurs
     }
   };
-  
+  useScript('vendor/jquery/jquery.min.js')
+  useScript('vendor/bootstrap/js/bootstrap.min.js')
+  useScript('assets/js/isotope.min.js')
+  useScript('assets/js/owl-carousel.js')
+  useScript('assets/js/counter.js')
+  useScript('assets/js/custom.js')
   return (
     <div>
       <Header />
@@ -123,10 +128,10 @@ export default function Tour() {
                       {/* Other property details */}
                     </ul>
                     <div className="main-button">
-                      {/* <a href="/package">View Details</a> */}
-                      <Link to={`/package/${property.id}`}>View Details</Link>
+                    <Link to={`/package/${property._id}`}>View Details</Link>
 
-                    </div>
+</div>
+
                   </div>
                 </div>
               ))}

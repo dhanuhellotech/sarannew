@@ -18,7 +18,7 @@ function App() {
     { path: '/tour', element: <Tour /> },
     { path: '/service', element: <Service /> },
     { path: '/about', element: <About /> },
-    { path: '/package/:packageId', element: <PackageDet /> }
+    { path: '/package/:id', element: <PackageDet /> }
   ];
 
   return (

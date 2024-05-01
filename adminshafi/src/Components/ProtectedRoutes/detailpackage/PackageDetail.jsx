@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 
 export default function PackageDetail() {
   const [name, setName] = useState('');
+  const [description,setDescription] = useState('');
   const [numberOfDays, setNumberOfDays] = useState(0);
   const [numberOfPersons, setNumberOfPersons] = useState(0);
   const [includes, setIncludes] = useState('');
@@ -23,6 +24,7 @@ export default function PackageDetail() {
     try {
       const requestData = new FormData();
       requestData.append('name', name);
+      requestData.append('description', description);
       requestData.append('numberOfDays', numberOfDays);
       requestData.append('numberOfPersons', numberOfPersons);
       requestData.append('includes', includes);
@@ -58,6 +60,7 @@ export default function PackageDetail() {
   };
   const clearForm = () => {
     setName('');
+    setDescription('');
     setNumberOfDays(0);
     setNumberOfPersons(0);
     setIncludes('');
@@ -123,6 +126,7 @@ const handleDelete = async (id) => {
 
 const handleEdit = (pkg) => {
   setName(pkg.name);
+  setDescription(pkg.description);
   setNumberOfDays(pkg.numberOfDays);
   setNumberOfPersons(pkg.numberOfPersons);
   setIncludes(pkg.includes);
@@ -145,6 +149,15 @@ const handleEdit = (pkg) => {
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="col-md-6 mt-4">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="description"
+                  value={description}
+                  onChange={(e) =>setDescription(e.target.value)}
                 />
               </div>
               <div className="col-md-6 mt-4">

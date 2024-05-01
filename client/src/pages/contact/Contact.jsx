@@ -1,9 +1,42 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Loader from '../../components/customhooks/common/loader/Loader'
 import Header from '../../components/customhooks/common/Header/Header'
 import { client } from '../../components/clientaxios/Client';
+import { useScript } from '../../components/customhooks/Script';
+
 import axios from 'axios';
+
 export default function Contact() {
+
+  const [users, setUsers] = useState([]);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [editingUserId, setEditingUserId] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await client.get('/topcontact');
+      console.log('Contact details response:', response.data);
+      // Assuming response.data is an array with one object
+      if (response.data.length > 0) {
+        const { phoneNumber, email, address } = response.data[0];
+        setContactDetails({ phoneNumber, email, address });
+      }
+    } catch (error) {
+      console.error('Error fetching contact details:', error);
+    }
+  };
+  
+  const [contactDetails, setContactDetails] = useState({
+    phoneNumber: '',
+    email: '',
+    address: ''
+  });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,6 +69,14 @@ export default function Contact() {
       alert('Error submitting the form. Please try again.');
     }
   };
+
+  useScript('vendor/jquery/jquery.min.js')
+  useScript('vendor/bootstrap/js/bootstrap.min.js')
+  useScript('assets/js/isotope.min.js')
+  useScript('assets/js/owl-carousel.js')
+  useScript('assets/js/counter.js')
+  useScript('assets/js/custom.js') 
+  
   return (
     <div>
 <div>
@@ -55,33 +96,39 @@ export default function Contact() {
   <div className="contact-page section">
     <div className="container">
       <div className="row">
-        <div className="col-lg-6">
-          <div className="section-heading">
-            <h6 style={{textAlign:'left'}} >| Contact Us</h6>
-            <h2 style={{textAlign:'left'}}>Get In Touch </h2>
-          </div>
-          <p style={{textAlign:'left'}}>When planning your next adventure, remember Saran Tours and Travel for all your travel needs. Discover unforgettable destinations, book hassle-free accommodations, and embark on unforgettable journeys with us. Share the excitement with your friends and family, and thank you for choosing Saran Tours and Travel for your travel experiences. Explore our website for a diverse range of travel options and inspiration. If you need further assistance or information, please don't hesitate to contact us.</p>
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="item phone">
-                <img src="assets/images/icons/phone.png" alt style={{maxWidth: 52}} />
-                <h className='h6'>+91-9995252223<br /><span >Phone Number</span></h>
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="item email">
-                <img src="assets/images/icons/mail.png" alt style={{maxWidth:52}} />
-                <h className='h6'>Sarantravels1908@gmail.com<br/><span>Business Email</span></h>
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="item email mt-4">
-                <img src="assets/images/icons/map.png" alt style={{maxWidth:52}} />
-                <h className='h6'>Sarantravels1908@gmail.com<br/><span>Business Email</span></h>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="col-lg-6">
+      <div className="section-heading">
+        <h6 style={{ textAlign: 'left' }}>| Contact Us</h6>
+        <h2 style={{ textAlign: 'left' }}>Get In Touch </h2>
+      </div>
+      <p style={{ textAlign: 'left' }}>
+        When planning your next adventure, remember Saran Tours and Travel for all your travel needs. Discover unforgettable destinations, book hassle-free accommodations, and embark on unforgettable journeys with us. Share the excitement with your friends and family, and thank you for choosing Saran Tours and Travel for your travel experiences. Explore our website for a diverse range of travel options and inspiration. If you need further assistance or information, please don't hesitate to contact us.
+      </p>
+      <div className="row">
+      
+      <div className="col-lg-12">
+  <div className="item phone">
+    <img src="assets/images/icons/phone.png" alt="Phone Icon" style={{ maxWidth: 52 }} />
+    <h6>{contactDetails.phoneNumber}<br /><span>Phone Number</span></h6>
+  </div>
+</div>
+<div className="col-lg-12">
+  <div className="item email">
+    <img src="assets/images/icons/mail.png" alt="Email Icon" style={{ maxWidth: 52 }} />
+    <h6>{contactDetails.email}<br /><span>Business Email</span></h6>
+  </div>
+</div>
+<div className="col-lg-12">
+  <div className="item email mt-4">
+    <img src="assets/images/icons/map.png" alt="Address Icon" style={{ maxWidth: 52 }} />
+    <h6>{contactDetails.address}<br /><span>Business Address</span></h6>
+  </div>
+</div>
+
+
+
+      </div>
+    </div>
         <div className="col-lg-6">
           <form id="contact-form" action method="post" onSubmit={handleSubmit}>
             <div className="row">
