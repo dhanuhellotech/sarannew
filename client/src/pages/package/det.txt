@@ -5,7 +5,6 @@ import { client } from "../../components/clientaxios/Client";
 
 export default function PackageDet() {
   const [packageDetail, setPackageDetail] = useState(null);
-  const[pacde,setPacde]= useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,37 +13,21 @@ export default function PackageDet() {
       console.log(id);
     }
   }, [id]);
-  
+
   const fetchPackageDetail = async (id) => {
     try {
       const response = await client.get(`/package/package/${id}/details`);
-      console.log(response.data);
-      setPackageDetail(response.data.package);
-      setPacde(response.data.packageDetails);
+      setPackageDetail(response.data);
     } catch (error) {
       console.error("Error fetching package details:", error);
     }
   };
-  
-  // Add this line to check the structure of packageDetail
-  
-  // Accessing numberOfDays
-  const numberOfDays = packageDetail?.packageDetails?.numberOfDays;
-  console.log(numberOfDays); // Add this line to check the value of numberOfDays
-  
-  // Accessing includes
-  const includes = packageDetail?.packageDetails?.includes;
-  console.log(includes); // Add this line to check the value of includes
-  
-  // Accessing excludes
-  const excludes = packageDetail?.packageDetails?.excludes;
-  console.log(excludes); // Add this line to check the value of excludes
-  
 
   if (!packageDetail) {
     return <div>Loading...</div>;
   }
-
+  const includes = packageDetail.includes || [];
+  const excludes = packageDetail.excludes || [];
   return (
     <div>
       <Header />
@@ -89,14 +72,28 @@ export default function PackageDet() {
                                 <ul>
                                   <li>
                                     Number of Days{" "}
-                                    <span>{pacde.numberOfDays}</span>
+                                    <span>{packageDetail.numberOfDays}</span>
                                   </li>
                                   <li>
                                     Number of Persons{" "}
-                                    <span>{pacde.numberOfPersons}</span>
+                                    <span>{packageDetail.numberOfPersons}</span>
                                   </li>
-                            
-                             
+                                  <li>
+                                    Number of rooms{" "}
+                                    <span>{packageDetail.numberOfRooms}</span>
+                                  </li>
+                                  <li>
+                                    Parking Available{" "}
+                                    <span>
+                                      {packageDetail.parkingAvailable
+                                        ? "Yes"
+                                        : "No"}
+                                    </span>
+                                  </li>
+                                  <li>
+                                    Payment Process{" "}
+                                    <span>{packageDetail.paymentProcess}</span>
+                                  </li>
                                 </ul>
                               </div>
                             </div>
@@ -144,7 +141,20 @@ export default function PackageDet() {
                 </span>
                 <h2 className="mb-4"> Start your adventure With us </h2>
                 <p>
-                  {pacde.includes}
+                  Saran Tours and Travels is your one-stop travel companion,
+                  offering a plethora of services to enhance your travel
+                  experience. From car rentals to corporate travel arrangements,
+                  exciting cruises to curated day trips, and family vacations to
+                  group tours, we've got everything covered. With seamless
+                  flight bookings spanning across continents and a variety of
+                  accommodation options, including exclusive rooms and
+                  homestays, your comfort is our priority. Simplify your journey
+                  with our bus ticketing and fastag services, and ensure peace
+                  of mind with our travel insurance plans. Explore India's
+                  beauty with our diverse tour options, and let us handle your
+                  passport, PAN card, and visa needs. Whether it's train
+                  tickets, vehicle insurance, or mobile recharges, Saran Tours
+                  and Travels is here to make your travel dreams a reality.
                 </p>
                 <p>
                   <a href="#" className="btn btn-primary --bs-btn-bg py-2 m-3 py-3 px-4">
@@ -233,7 +243,7 @@ export default function PackageDet() {
                   Welcome to Sharan Tours and Travels
                 </span>
                 <h2 className="mb-4"> Start your adventure With us </h2>
-                {pacde.excludes }
+                {packageDetail.excludes }
   
 
                 <p>

@@ -32,16 +32,36 @@
   <script src="assets/js/isotope.min.js"></script>
   <!-- <script src="assets/js/owl-carousel.js"></script> -->
   <script src="assets/js/counter.js">
-  $(document).ready(function() {
-    var owl = $("#owl-demo");
-    if(owl.length){
-      owl.owlCarousel({
-        navigation : true
-      });
-    }
-  })
+
+
 
   </script>
+  <!-- <script>
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+        // Owl Carousel options
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            1000:{
+                items:5,
+                nav:true,
+                loop:false
+            }
+        }
+    });
+});
+
+</script> -->
 
   <!-- <script src="assets/js/custom.js"></script> -->
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> 

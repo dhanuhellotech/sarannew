@@ -128,7 +128,7 @@ export default function Tour() {
                       {/* Other property details */}
                     </ul>
                     <div className="main-button">
-                    <Link to={`/package/${property._id}`}>View Details</Link>
+                    <Link to={`/package/${property.name}`}>View Details</Link>
 
 </div>
 

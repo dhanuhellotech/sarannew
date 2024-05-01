@@ -14,14 +14,14 @@ export default function Tobbar() {
   }, []);
 
   const fetchTobbar = () => {
-    client.get('/tobbar')
+    client.get('/topbar')
       .then(response => setTobbar(response.data))
       .catch(error => console.error('Error fetching tobbar:', error));
   };
 
   const handleDelete = async (tobbarId) => {
     try {
-      const response = await client.delete(`/tobbar/${tobbarId}`);
+      const response = await client.delete(`/topbar/${tobbarId}`);
       console.log('Response:', response.data);
       fetchTobbar();
     } catch (error) {
@@ -44,11 +44,11 @@ export default function Tobbar() {
 
       if (editingEntryId) {
         // If editing an entry, send a request to update the existing entry
-        await client.put(`/tobbar/${editingEntryId}`, newTobbar);
+        await client.put(`/topbar/${editingEntryId}`, newTobbar);
         setEditingEntryId(null); // Reset editing state
       } else {
         // If not editing, send a request to create a new entry
-        await client.post('/tobbar', newTobbar);
+        await client.post('/topbar', newTobbar);
       }
 
       clearForm();
