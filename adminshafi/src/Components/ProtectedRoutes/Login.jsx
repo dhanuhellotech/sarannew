@@ -121,7 +121,7 @@ const Login = ({ onLogin }) => {
                 <div className="card-body">
                 <h3 className='text-nowrap logo-img text-center d-block py-3 w-100 text-white'>Welcome Admin</h3>
 
-                    <img src="assets/images/logo/Logo.png" width={140} alt="Logo" />
+                    <img src="assets/logo/Saran Tours & Travels Kumily Logo Rounded.png" width={140} alt="Logo" />
               
                   <h2 className="text-center mb-4 text-white">Login</h2>
                   {error && <div className="alert alert-danger">{error}</div>}

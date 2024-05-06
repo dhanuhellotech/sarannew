@@ -54,15 +54,15 @@ export default function Tour() {
       setLoading(false); // Set loading state to false if an error occurs
     }
   };
-  useScript('vendor/jquery/jquery.min.js')
-  useScript('vendor/bootstrap/js/bootstrap.min.js')
-  useScript('assets/js/isotope.min.js')
-  useScript('assets/js/owl-carousel.js')
-  useScript('assets/js/counter.js')
-  useScript('assets/js/custom.js')
+  // useScript('vendor/jquery/jquery.min.js')
+  // useScript('vendor/bootstrap/js/bootstrap.min.js')
+  // useScript('assets/js/isotope.min.js')
+  // useScript('assets/js/owl-carousel.js')
+  // useScript('assets/js/counter.js')
+  // useScript('assets/js/custom.js')
   return (
     <div>
-      <Header />
+ 
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">

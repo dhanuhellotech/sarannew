@@ -10,7 +10,7 @@ const vehicleRouter = require('./Router/vehicleRouter');
 const tourFormRoutes = require('./Router/tourFormRoutes');
 const serviceRoutes = require('./Router/serviceRouter')
 const TopcontactRoutes = require('./Router/TopcontactRouter')
-
+const PopupRoutes = require('./Router/popupRouter')
 const TopbarRoutes = require('./Router/TopbarRoutes')
  // Adjusted import path
 require('dotenv').config();
@@ -37,7 +37,8 @@ app.use('/package', packageRoutes);
 app.use('/packagedetail', packageDetailRoutes);
 app.use('/services', serviceRoutes);
 app.use('/topcontact', TopcontactRoutes)
-app.use('/topbar',TopbarRoutes )
+app.use('/topbar',TopbarRoutes );
+app.use('/popup',PopupRoutes )
 // Merge route for fetching package details
 
 // Connect to MongoDB

@@ -25,7 +25,7 @@ const vehicleSchema = new mongoose.Schema({
   pickUpDate: {
     type: Date,
     required: true
-  }
+  }   
 });
 
 const Vehicle = mongoose.model('Vehicle', vehicleSchema);

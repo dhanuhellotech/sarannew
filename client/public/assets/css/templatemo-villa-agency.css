@@ -141,6 +141,7 @@ section,
 article,
 aside,
 
+
 hgroup {
   display: block;
 }
@@ -209,7 +210,7 @@ body {
 }
 
 .section {
-  margin-top: 120px;
+  margin-top:35px;
 }
 
 .section-heading {
@@ -272,7 +273,7 @@ body {
 
 .main-button a {
   display: inline-block;
-  background-color: #1e1e1e;
+  background-color: #FBBC23;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -426,7 +427,7 @@ Header Style
 }
 
 .sub-header ul.social-links li a:hover {
-  background-color: #f35525;
+  background-color: #0D2259;
 }
 
 .sub-header ul.info li {
@@ -445,7 +446,7 @@ Header Style
 
 .sub-header ul.info li i {
   font-size: 20px;
-  color: #f35525;
+  color: #FBBC23;
   margin-right: 8px;
 }
 
@@ -487,15 +488,20 @@ Header Style
   display: inline-block;
 }
 
-.header-area .main-nav .logo h1 {
+.header-area .main-nav  {
   line-height: 100px;
   font-size: 28px;
   text-transform: uppercase;
   color: #1e1e1e;
   font-weight: 700;
   letter-spacing: 2px;
-}
 
+}
+.logo {
+  line-height: 80px;
+  width: 100px;
+  padding: 5px;
+}
 .background-header .main-nav .logo h1 {
   line-height: 80px;
 }
@@ -552,7 +558,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-  background-color: #f35525;
+  background-color: #FBBC23;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -564,7 +570,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child:hover a {
-  background-color: #1e1e1e;
+  background-color: #0D2259;
 }
 
 .header-area .main-nav .nav li:last-child:hover a i {
@@ -572,15 +578,15 @@ Header Style
 }
 
 .header-area .main-nav .nav li:hover a {
-  color: #f35525;
+  color: #FBBC23;
 }
 
 .header-area .main-nav .nav li a.active {
-  color: #f35525;
+  color: #FBBC23;
 }
 
 .background-header .main-nav .nav li a.active {
-  color: #f35525;
+  color: #FBBC23;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -735,6 +741,7 @@ Header Style
     position: absolute;
     left: 30px;
     top: 0px;
+    width: 80px;
   }
   .background-header .main-nav .logo {
     top: 0px;
@@ -1220,7 +1227,7 @@ Properties Style
 
 .properties .item {
   background-color: #fafafa;
-  border-radius: 10px;
+  border-radius: 40px;
   padding: 30px;
   margin-bottom: 30px;
 }
@@ -1288,7 +1295,7 @@ Contact Style
 */
 
 .contact {
-  background-image: url(../images/contact-bg.jpg);
+  background-image: url(../images/bookform.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

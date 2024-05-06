@@ -5,12 +5,12 @@ import Header from '../../components/customhooks/common/Header/Header'
 import Footer from './../../components/customhooks/common/footer/Footer';
 import './about.css'
 export default function About() {
-  useScript('vendor/jquery/jquery.min.js')
-  useScript('vendor/bootstrap/js/bootstrap.min.js')
-  useScript('assets/js/isotope.min.js')
-  useScript('assets/js/owl-carousel.js')
-  useScript('assets/js/counter.js')
-  useScript('assets/js/custom.js')
+  // useScript('vendor/jquery/jquery.min.js')
+  // useScript('vendor/bootstrap/js/bootstrap.min.js')
+  // useScript('assets/js/isotope.min.js')
+  // useScript('assets/js/owl-carousel.js')
+  // useScript('assets/js/counter.js')
+  // useScript('assets/js/custom.js')
   const [clients, setClients] = useState(0);
   const [projects, setProjects] = useState(0);
   const [countries, setCountries] = useState(0);
@@ -60,7 +60,7 @@ export default function About() {
 
   return (
     <div className='about'>
-      <Header/>
+  
 
       <div class="page-heading header-text">
     <div class="container">

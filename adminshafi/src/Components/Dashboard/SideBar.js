@@ -51,7 +51,7 @@ const logout = () => {
       sx={{overflowY:"scroll",paddingTop:"5px"}}
     >
      <Grid item  display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="25%" >
-        <img src="assets/images/logo/logo.jpeg"  width="25%" style={{borderRadius:"15px",marginBottom:"10px"}}/>
+        <img src="assets/logo/Saran Tours & Travels Kumily Logo Rounded.png"  width="25%" style={{borderRadius:"15px",marginBottom:"10px"}}/>
         <Typography variant="h6 text-white">Welcome Admin</Typography>
      </Grid>
      <Grid item direction="column" height="75%" width="100%" paddingLeft={1} paddingRight={1}>

@@ -47,7 +47,7 @@ export default function PackageDet() {
 
   return (
     <div>
-      <Header />
+
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">

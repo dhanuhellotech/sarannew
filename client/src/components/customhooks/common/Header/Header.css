@@ -1,0 +1,29 @@
+.info {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .info li {
+    margin-right: 20px;
+  }
+  
+  .info li i {
+    margin-right: 5px;
+  }
+  
+  .social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .social-links li {
+    margin-right: 10px;
+  }
+  
+  .social-links li a {
+    color: #000; /* Change color as needed */
+  }
