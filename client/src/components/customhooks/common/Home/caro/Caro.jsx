@@ -32,7 +32,7 @@ export default function Caro() {
             <section className="w-full flex justify-center mt-[180px]">
               <div className="w-[700px] md:w-[900px] container h-auto  ">
                 <p className="w-full text-center uppercase text-white tracking-widest [word-spacing:8px] mb-4">Lets travel the world with us</p>
-                <h1 className="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">Explore The World With <span className="travol">Saran Tours and Travels</span></h1>
+                <h1 className="w-full text-center text-white text-4xl md:text-7xl font-secondary uppercase tracking-widest">Explore The World With <span className="travol">Saran Tours and Travels</span></h1>
               </div>
             </section>
          
@@ -57,7 +57,7 @@ export default function Caro() {
             <section className="w-full flex justify-center mt-[180px]">
               <div className="w-[700px] md:w-[900px] container h-auto  ">
                 <p className="w-full text-center uppercase text-white tracking-widest [word-spacing:8px] mb-4"> Where Every Journey is an Adventure!</p>
-                <h1 className="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">Discover Your Dream Destinations with<span className="travol"> Saran Tours </span></h1>
+                <h1 className="w-full text-center text-white text-4xl md:text-7xl font-secondary uppercase tracking-widest">Discover Your Dream Destinations with<span className="travol"> Saran Tours </span></h1>
               </div>
             </section>
          
@@ -84,7 +84,7 @@ export default function Caro() {
               <div className="w-[700px] md:w-[900px] container h-auto  ">
                 <p className="w-full text-center uppercase text-white tracking-widest [word-spacing:8px] mb-4">Embark on Unforgettable Escapes</p>
               
-                <h1 className="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">Let <span className="travol">Saran Tours </span>Turn Your Dreams into Reality</h1>
+                <h1 className="w-full text-center text-white text-4xl md:text-7xl font-secondary uppercase tracking-widest">Let <span className="travol">Saran Tours </span>Turn Your Dreams into Reality</h1>
 
               </div>
             </section>

@@ -4,7 +4,7 @@ import axios from "axios";
 import { client } from "../clientaxios/Client";
 const Popup = () => {
   const [show, setShow] = useState(false);
-
+  const [submitted, setSubmitted] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -30,21 +30,7 @@ const Popup = () => {
       alert("Please enter a valid number for No of persons");
       return;
     }
-    // const nameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // if (!nameRegex.test(formData.name)) {
-    //   alert("Please enter a valid name ");
-    //   return;
-    // }
-    // const cityOfResidenceRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // if (!cityOfResidenceRegex.test(formData.cityOfResidence)) {
-    //   alert("Please enter a valid cityOfResidence ");
-    //   return;
-    // }
-    //  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-    //  if (!emailRegex.test(formData.email)) {
-    //    alert("Please enter a valid email address");
-    //    return;
-    //  }
+    
     const phoneNumberRegex = /^[0-9]{10}$/;
     if (!phoneNumberRegex.test(formData.phoneNumber)) {
       alert("Please enter a valid phone number (10 digits)");
@@ -52,12 +38,17 @@ const Popup = () => {
     }
     
     try {
-      await client
-        .post('popup/submit_enquiry', formData)
-        .then((res) => {
-          console.log(res.data);
-        });
 
+        await axios
+          .post('http://localhost:5000/popup/submit_enquiry', formData)
+          .then((res) => {
+            console.log(res.data);
+          });
+      setSubmitted(true);
+      sessionStorage.setItem('formSubmitted', 'true');
+      // Close the modal after successful submission
+      setShow(false);
+  
       setFormData({
         dateOfTravel: "",
         numberOfPersons: "",
@@ -71,17 +62,22 @@ const Popup = () => {
     } catch (error) {
       console.error("Error submitting enquiry form:", error);
     }
-    console.log(formData);
   };
+  
 
   useEffect(() => {
     // Show the modal when the component mounts
     handleShow();
+    setShow(true);
+
+    if (sessionStorage.getItem('formSubmitted')) {
+      setShow(false);
+    }
   }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
 
   return (
     <div>
-      {show && (
+      {show && !submitted && (
         <div
           className="modal fade show custom-modal"
           tabIndex="-1"
@@ -101,19 +97,7 @@ const Popup = () => {
                   onClick={handleClose}
                 ></button>
               </div>
-              {/* <div className="row"> */}
-              {/* <div className="col-md-6 p-4"> */}
-              {/* <img
-                    src="images/modal.jpg"
-                    alt="Image"
-                    className="img-fluid"
-                  /> */}
-
-              {/* </div> */}
-
-              {/* <div className="col-md-6"> */}
-              {/* </div> */}
-              {/* </div> */}
+   
 
               <div className="modal-body">
                 <form onSubmit={handleSubmit} autoComplete="off">

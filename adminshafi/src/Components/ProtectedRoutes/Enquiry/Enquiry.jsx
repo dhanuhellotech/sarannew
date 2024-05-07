@@ -9,7 +9,7 @@ const EnquiryPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await client.get('/enquiry/enquiries');
+        const response = await client.get('/popup/enquiries');
         // Check if the response data is defined and is an array
         if (response.data && Array.isArray(response.data)) {
           setEnquiryDataList(response.data);
@@ -40,7 +40,7 @@ const EnquiryPage = () => {
 
     if (result.isConfirmed) {
       try {
-        await client.delete(`/enquiry/enquiries/${id}`);
+        await client.delete(`/popup/enquiries/${id}`);
         setEnquiryDataList((prevData) => prevData.filter(enquiryData => enquiryData._id !== id));
         Swal.fire(
           'Deleted!',
@@ -84,38 +84,31 @@ const EnquiryPage = () => {
       <table className="table table-striped table-bordered text-left" style={{width:'100%'}}>
         <thead>
           <tr>
-            <th>Name</th>
+          <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Subject</th>
-            <th>Message</th>
-            <th>dateOfBirth</th>
-            <th>address</th>
-            <th>DateTime</th>
-            <th>preferredDays</th>
-            <th>TimeToCall</th>
-            <th>AppointmentType</th>
+       
+            <th>Date of Travel</th> {/* Updated column name */}
+            <th>City of Residence</th> {/* Updated column name */}
+            <th>Destination</th> {/* Updated column name */}
+            <th>Vacation Type</th> {/* Updated column name */}
+   
+    
+         
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {enquiryDataList.map(enquiryData => (
             <tr key={enquiryData._id}>
-              <td>{enquiryData.name}</td>
+                <td>{enquiryData.name}</td>
               <td>{enquiryData.email}</td>
               <td>{enquiryData.phoneNumber}</td>
-        
-              <td>{enquiryData.subject}</td>
-              <td>{enquiryData.message}</td>
-              <td>{enquiryData.dateOfBirth.split('T')[0]}</td>
-              <td>{enquiryData.address}</td>
-              <td>{formatDateTime(enquiryData.preferredAppointmentDateTime)}</td>
-
-
-              <td>{mapDayToName(enquiryData.preferredDays)}</td>
-              
-                 <td>{enquiryData.bestTimeToCall}</td>
-                <td>{enquiryData.appointmentType}</td>
+          
+              <td>{enquiryData.dateOfTravel}</td>
+              <td>{enquiryData.cityOfResidence}</td>
+              <td>{enquiryData.destination}</td>
+              <td>{enquiryData.vacationType}</td>
 
               <td>
                 <button

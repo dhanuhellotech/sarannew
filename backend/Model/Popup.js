@@ -5,7 +5,7 @@ const popupSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  numberOfPersons: {
+  numberOfPersons: {  
     type: Number,
     required: true,
   },

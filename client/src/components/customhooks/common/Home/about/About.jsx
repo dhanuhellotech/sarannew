@@ -7,7 +7,7 @@ export default function About() {
   <div className="w-full container 2xl:px-36">
     <div>
       <p className="text-color4 uppercase px-5">MOST POPULAR</p>
-      <p className="text-5xl font-secondary text-color3 px-5">Popular <span className="text-color1">Destination</span></p>
+      <p className="text-4xl font-secondary text-color3 px-5">Popular <span className="text-color1">Destination</span></p>
       <div className="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
         <figure className="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000 overflow-hidden group ">   
           <img src="assets/images/destination-7.jpg" alt className="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000" />

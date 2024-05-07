@@ -53,13 +53,13 @@ function App() {
 
   return (
     <div className="App">
-        {/* {location.pathname !== "/*" && showPopup && (
+        {location.pathname !== "/*" && showPopup && (
         <Popup
           onSubmit={handleFormSubmit}
           onClose={handleCloseFormPopup}
       
         />
-      )} */}
+      )}
       <Header/>
     <Routes>
       {routes.map((route, index) => (
