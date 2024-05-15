@@ -120,9 +120,9 @@ export default function VehicleModel() {
                                             <button className="btn btn-danger ms-2 mr-2" onClick={handleCancelEdit}>Cancel</button>
                                         </>
                                     ) : (
-                                        <button className="btn btn-primary ms-2 mr-2" onClick={() => handleEditModel(model._id, model.modelName)}>Edit</button>
+                                        <button className="btn btn-warning ms-2 mr-2" onClick={() => handleEditModel(model._id, model.modelName)}>Edit</button>
                                     )}
-                                    <button className="btn btn-primary ms-2" onClick={() => handleDeleteModel(model._id)}>Delete</button>
+                                    <button className="btn btn-primary ms-2" style={{backgroundColor:'#0D2259'}} onClick={() => handleDeleteModel(model._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

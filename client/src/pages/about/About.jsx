@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react'
 import { useScript } from '../../components/customhooks/Script'
-
+import Loader from '../../components/customhooks/common/loader/Loader';
 import Header from '../../components/customhooks/common/Header/Header'
 import Footer from './../../components/customhooks/common/footer/Footer';
 import './about.css'
@@ -59,6 +59,8 @@ export default function About() {
   };
 
   return (
+    <>
+
     <div className='about'>
   
 
@@ -203,5 +205,6 @@ export default function About() {
 
 
     </div>
+    </>
   )
 }

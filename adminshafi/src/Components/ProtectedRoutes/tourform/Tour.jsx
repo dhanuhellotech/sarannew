@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { client } from '../../clientaxios/Clientaxios';
+import TourModel from './TourModel';
 
 export default function Tour() {
     const [guestName, setGuestName] = useState('');
@@ -123,18 +124,19 @@ export default function Tour() {
                                 <td>{tourForm.email}</td>
                                 <td>{tourForm.phoneNumber}</td>
                                 <td>{tourForm.tourPackage}</td>
-                                <td>{readArray[index] && tourForm.message}   <button className="btn btn-primary" onClick={() => handleRead(index)}>
+                                <td>{readArray[index] && tourForm.message}   <button className="btn btn-warning" onClick={() => handleRead(index)}>
                                         {readArray[index] ? 'Hide Message' : 'Read Message'}
                                     </button></td>
                                 <td>
                                  
-                                    <button className="btn btn-primary ms-2" onClick={() => handleDeleteTourForm(tourForm._id)}>Delete</button>
+                                    <button className="btn btn-warning ms-2" onClick={() => handleDeleteTourForm(tourForm._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+            <TourModel/>
         </div>
     );
 }

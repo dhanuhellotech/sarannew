@@ -362,7 +362,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #f35525;
+  background: '##FBBC23';
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -385,7 +385,7 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #f35525;
+  background: #FBBC23;
   border-radius: 50%;
 }
 
@@ -1076,8 +1076,8 @@ Video Style
   display: inline-block;
   text-align: center;
   line-height: 52px;
-  color: #f35525;
-  outline: 15px solid rgba(254, 85, 37, 0.5);
+  color: #FBBC23;
+  outline: 15px solid rgba(255, 188, 35, 0.5);
   font-size: 18px;
 }
 
@@ -1086,7 +1086,23 @@ Video Style
 Fun Facts Style
 --------------------------------------------- 
 */
+.back-to-top {
+  position: fixed;
+  left: 30px;
+  bottom: 30px;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  z-index: 99;
+}
 
+.btn-lg-square {
+  width: 56px;
+  height: 56px;
+}
 .fun-facts {
   text-align: center;
   margin-top: 125px;
@@ -1401,7 +1417,7 @@ Contact Style
 }
 
 .contact-content #contact-form button:hover {
-  background-color: #f35525;
+  background-color: #FBBC23;
 }
 
 /* 

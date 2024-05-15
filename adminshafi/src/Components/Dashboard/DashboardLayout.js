@@ -9,6 +9,9 @@ import {useSelector,useDispatch} from "react-redux"
 import { openMenu,closeMenu } from "../Redux/MenuSlice";
 
 import Loader from "../../Loader.js";
+const LazyRound = lazy(()=>import("../ProtectedRoutes/roundtrip/Round.jsx"))
+const  Lazyoneway =lazy(()=>import("../ProtectedRoutes/oneway/Oneway.jsx"))
+const LazyTrip = lazy(()=>import("../ProtectedRoutes/tripvechicles/TripVechicles.jsx"))
 const LazyEnquiry = lazy(()=>import("../ProtectedRoutes/Enquiry/Enquiry.jsx"))
 const LazyTopbar = lazy(()=>import("../ProtectedRoutes/topbar/Topbar.jsx"))
 const LazyAddress = lazy(()=>import("../ProtectedRoutes/address/Address.jsx"))
@@ -155,6 +158,14 @@ const DashboardLayout = ({ children,showMenu}) => {
       </Suspense>
     }
   />
+  <Route
+    path="/trip"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <LazyTrip />
+      </Suspense>
+    }
+  />
   
 <Route
     path="/enquiry"
@@ -164,6 +175,25 @@ const DashboardLayout = ({ children,showMenu}) => {
       </Suspense>
     }
   />
+
+<Route
+    path="/oneway"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <Lazyoneway />
+      </Suspense>
+    }
+  />
+
+<Route
+    path="/round"
+    element={
+      <Suspense fallback={<Loader open={true} />}>
+        <LazyRound />
+      </Suspense>
+    }
+  />
+
 </Routes>
 
         </Grid>

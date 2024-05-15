@@ -80,7 +80,7 @@ const Login = ({ onLogin }) => {
   const handleForgotPassword = async (values) => {
     try {
       // Check if the provided email matches the allowed email
-      const validEmail = 'Shafichannel123@gmail.com';
+      const validEmail = 'dhanalakshmihellotech@gmail.com';
       if (values.email === validEmail) {
         setLoading(true); // Set loading state to true
         const response = await client.post('/api/send-reset-email', { email: values.email });

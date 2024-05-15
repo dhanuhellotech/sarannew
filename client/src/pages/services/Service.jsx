@@ -49,10 +49,19 @@ export default function Service() {
     </div>
   </div>
 
-  
+  <div className=' text-center' >         
+              
+              
+</div>
         <section className="ftco-section ">
+        <p  className="text-color3 text-5xl font-bold uppercase font-secondary my-4 p-2">saran Tours <span className="text-color1"> Special</span> Services</p>
+
           <div className="container">
-            <div className="row">
+
+ 
+  
+   <div className="row">
+    
               {/* Map over the services data to render each service */}
               {services.map((service, index) => (
   <div className="col-md-4 ftco-animate" key={index}>

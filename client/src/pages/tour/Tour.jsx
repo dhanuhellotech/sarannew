@@ -100,7 +100,7 @@ export default function Tour() {
               {properties.map((property, index) => (
                 <div className="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6" key={index}>
                   <div className="item">
-                    <a href="property-details.html"><img src={property.imageUrl} alt={property.name} /></a>
+                    <a href="/"><img src={property.imageUrl} alt={property.name} /></a>
                     <span className="category">
                       {[...Array(property.stars)].map((_, index) => (
                         <FontAwesomeIcon color='#FBBC23' icon={faStar} key={index} />
@@ -108,8 +108,8 @@ export default function Tour() {
                     </span>
                     <h6>${property.price}</h6>
                  
-                    <h4><a href="property-details.html">{property.name}</a></h4>
-
+                    <h4><a href="/">{property.name}</a></h4>
+    
                     <ul>
                       <li>
                         {/* Description:  */}

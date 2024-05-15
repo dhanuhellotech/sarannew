@@ -39,8 +39,8 @@ const Popup = () => {
     
     try {
 
-        await axios
-          .post('http://localhost:5000/popup/submit_enquiry', formData)
+        await client
+          .post('/popup/submit_enquiry', formData)
           .then((res) => {
             console.log(res.data);
           });

@@ -70,16 +70,24 @@ export default function Header() {
         <div className="col-lg-8 col-md-8">
         <ul className="info">
                 <li>
+                <Link to={`tel:${contactInfo.number}`} >
+
                   <i className="fa fa-envelope" />
                   {contactInfo.number}
+                  </Link>
                 </li>
+         
                 <li>
+                  <Link to='https://maps.app.goo.gl/mhKJWzniABRsnbLSA'>
                   <i className="fa fa-map" />
                   {contactInfo.location}
+                  </Link>
                 </li>
                 <li>
+                  <Link to={`mailto:${contactInfo.mailid}`} >
                 <i className="fa fa-envelope" />
                   {contactInfo.mailid}
+                  </Link>
                 </li>
               </ul>
         </div>
@@ -113,8 +121,9 @@ export default function Header() {
              <li><Link to='/about'>About</Link></li>
              <li><Link to="/service">Services</Link></li>
              <li><Link to="/tour">Tour Packages</Link></li>
+             <li><Link to="/vechicle">Vechicles</Link></li>
              <li><Link to="/contact">Contact</Link></li>
-             <li><a href="#"><i class="fa fa-calendar"></i> Schedule a visit</a></li>
+             <li><a href="/contact"><i class="fa fa-calendar"></i> Schedule a visit</a></li>
             </ul>   
             <a className="menu-trigger" onClick={() => SetnavState(!navstate)}>
               <span>Menu</span>

@@ -17,7 +17,16 @@ export default function Contact() {
   useEffect(() => {
     fetchUsers();
   }, []);
-
+  const sendContactEmail = async (formData) => {
+    try {
+      // Send the email data to the backend endpoint
+      const response = await client.post('/api/contact', formData);
+      console.log('Email sent successfully:', response.data);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      throw new Error('Failed to send email');
+    }
+  };
   const fetchUsers = async () => {
     try {
       const response = await client.get('/topcontact');
@@ -54,7 +63,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/contacts', formData);
+      await client.post('contacts', formData);
       alert('Form submitted successfully');
       setFormData({
         name: '',
@@ -64,6 +73,8 @@ export default function Contact() {
         message: '',
         category: 'General Inquiry'
       });
+      alert('Form submitted successfully');
+      await sendContactEmail(formData);
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Error submitting the form. Please try again.');

@@ -1,8 +1,8 @@
 import React, { useState,useRef ,useEffect} from 'react';
-import {client} from '../../../../clientaxios/Client'
+import { client } from '../../components/clientaxios/Client';
 
 import axios from 'axios'
-export default function Booking() {
+export default function FormVehicle() {
     const [activeTab, setActiveTab] = useState('Tour Packages');
     const formRef = useRef(null);
     const [vehicles, setVehicles] = useState([]);
@@ -25,9 +25,9 @@ export default function Booking() {
         try {
             let endpoint;
             if (activeTab === 'Tour Packages') {
-                endpoint = '/tourform/submit'; // Concatenate with baseURL
+                endpoint = '/roundtrip'; // Concatenate with baseURL
             } else if (activeTab === 'vehicle') {
-                endpoint = '/vecform/vehicles'; // Concatenate with baseURL
+                endpoint = '/oneway'; // Concatenate with baseURL
             }
             console.log('Endpoint:', endpoint); // Log the endpoint URL
             const response = await client.post(endpoint, data);
@@ -66,8 +66,8 @@ export default function Booking() {
                     <div className="row">
                         <div className="col-lg-4 offset-lg-4">
                             <div className="section-heading text-center">
-                                <h6>| Book Now</h6>
-                                <h2>Book Your Trip With Our Agents</h2>
+                                <h6>| Travel With Vehicles</h6>
+                                <h2>Saran Vehicles </h2>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ export default function Booking() {
                 color: activeTab === 'Tour Packages' ? 'white' : 'white'
             }}
         >
-            Tour Packages
+     Round Trip
         </button>
     </li>
     <li className="nav-item" role="presentation">
@@ -99,7 +99,7 @@ export default function Booking() {
                 color: activeTab === 'vehicle' ? 'white' : 'white'
             }}
         >
-            Vehicles
+  One way Trip
         </button>
     </li>
 </ul>
@@ -107,12 +107,12 @@ export default function Booking() {
                     <div className="row">
                     {activeTab === 'Tour Packages' && (
     <div className="col-lg-12">
-        <form id="contact-form" ref={formRef}  method="post" onSubmit={handleSubmit} action="">
+        <form id="contact-form" ref={formRef} method="post" onSubmit={handleSubmit} action="">
             <div className="row">
                 <div className="col-lg-6">
                     <fieldset>
-                        <label htmlFor="guestName">Guest Name</label>
-                        <input type="text" name="guestName" id="guestName" placeholder="Your Name..." autoComplete="on" required />
+                        <label htmlFor="name">Guest Name</label>
+                        <input type="text" name="name" id="name" placeholder="Your Name..." autoComplete="on" required />
                     </fieldset>
                 </div>
                 <div className="col-lg-6">
@@ -123,28 +123,50 @@ export default function Booking() {
                 </div>
                 <div className="col-lg-6">
                     <fieldset>
-                        <label htmlFor=" phoneNumber">Phone Number</label>
-                        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Your Phone Number..." required />
+                        <label htmlFor="mobileNo">Phone Number</label>
+                        <input type="tel" name="mobileNo" id="mobileNo" placeholder="Your Phone Number..." required />
                     </fieldset>
                 </div>
                 <div className="col-lg-6">
-    <fieldset>
-        <label htmlFor="tourPackage" style={{ marginBottom: '10px', display: 'block' }}>Tour Package</label>
-        <select name="tourPackage" id="tourPackage" required style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
-            <option value="">----- Select Tour Package -----</option>
-            {tourPackages.map((tourPackage, index) => (
-    <option key={index} value={tourPackage.tourPackagename}>{tourPackage.tourPackagename}</option>
-))}
-
-
-        </select>
-    </fieldset>
-</div>
-
-                <div className="col-lg-12">
                     <fieldset>
-                        <label htmlFor="message">Message</label>
-                        <textarea name="message" id="message" placeholder="Your Message" defaultValue={""} />
+                        <label htmlFor="vehicleType" style={{ marginBottom: '10px', display: 'block' }}>Vehicle Type</label>
+                        <select name="vehicleType" id="vehicleType" required style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
+                            <option value="">Select Vehicle Type</option>
+                            {vehicleModels.map(vehicle => (
+                                <option key={vehicle._id} value={vehicle.modelName}>{vehicle.modelName}</option>
+                            ))}
+                        </select>
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="pickupLocation">Pickup Location</label>
+                        <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Pickup Location" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="dropLocation">Drop Location</label>
+                        <input type="text" name="dropLocation" id="dropLocation" placeholder="Drop Location" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="pickupDate">Pickup Date</label>
+                        <input type="date" name="pickupDate" id="pickupDate" required />
+                    </fieldset>
+                </div>
+          
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="numberOfPersons">Number of Persons</label>
+                        <input type="number" name="numberOfPersons" id="numberOfPersons" placeholder="Number of Persons" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="returnDate">Return Date</label>
+                        <input type="date" name="returnDate" id="returnDate" required />
                     </fieldset>
                 </div>
                 <div className="col-lg-12">
@@ -157,14 +179,15 @@ export default function Booking() {
     </div>
 )}
 
-                    {activeTab === 'vehicle' && (
+
+{activeTab === 'vehicle' && (
     <div className="col-lg-12">
         <form id="contact-form" action method="post" ref={formRef} onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-lg-6">
                     <fieldset>
-                        <label htmlFor="guestName" >Guest Name</label>
-                        <input type="text" name="guestName" id="guestName" placeholder="Your Name..." autoComplete="on" required />
+                        <label htmlFor="name" >Guest Name</label>
+                        <input type="text" name="name" id="name" placeholder="Your Name..." autoComplete="on" required />
                     </fieldset>
                 </div>
                 <div className="col-lg-6">
@@ -175,31 +198,49 @@ export default function Booking() {
                 </div>
                 <div className="col-lg-6">
                     <fieldset>
-                        <label htmlFor="phoneNumber">Phone Number</label>
-                        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Your Phone Number..." required />
-                    </fieldset>
-                </div>
-                <div className="col-lg-6">
-                <fieldset>
-                                                <label htmlFor="vehicleModel"style={{ marginBottom: '10px', display: 'block' }}>Vehicle Model</label>
-                                                <select name="vehicleModel" id="vehicleModel" required style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
-                                                    <option value="">Select Vehicle Model</option>
-                                                    {vehicleModels.map(vehicle => (
-                                                        <option key={vehicle._id} value={vehicle.modelName}>{vehicle.modelName}</option>
-                                                    ))}
-                                                </select>
-                                            </fieldset>
-                </div>
-                <div className="col-lg-6">
-                    <fieldset>
-                        <label htmlFor="pickUpDate">Pick-up Date</label>
-                        <input type="date" name="pickUpDate" id="pickUpDate" required />
+                        <label htmlFor="mobileNo">Phone Number</label>
+                        <input type="tel" name="mobileNo" id="mobileNo" placeholder="Your Phone Number..." required />
                     </fieldset>
                 </div>
                 <div className="col-lg-6">
                     <fieldset>
-                        <label htmlFor="address">Pick-up Place</label>
-                        <input type="text" name="address" id="address" required />
+                        <label htmlFor="vehicleType" style={{ marginBottom: '10px', display: 'block' }}>Vehicle Type</label>
+                        <select name="vehicleType" id="vehicleType" required style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
+                            <option value="">Select Vehicle Type</option>
+                            {vehicleModels.map(vehicle => (
+                                <option key={vehicle._id} value={vehicle.modelName}>{vehicle.modelName}</option>
+                            ))}
+                        </select>
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="numberOfPersons">Number of Persons</label>
+                        <input type="number" name="numberOfPersons" id="numberOfPersons" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="pickupDate">Pick-up Date</label>
+                        <input type="date" name="pickupDate" id="pickupDate" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="pickupLocation">Pick-up Place</label>
+                        <input type="text" name="pickupLocation" id="pickupLocation" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="dropLocation">Drop-off Place</label>
+                        <input type="text" name="dropLocation" id="dropLocation" required />
+                    </fieldset>
+                </div>
+                <div className="col-lg-6">
+                    <fieldset>
+                        <label htmlFor="returnDate">Return Date</label>
+                        <input type="date" name="returnDate" id="returnDate" required />
                     </fieldset>
                 </div>
                 <div className="col-lg-12">
@@ -211,6 +252,7 @@ export default function Booking() {
         </form>
     </div>
 )}
+
 
                     </div>
                 </div>

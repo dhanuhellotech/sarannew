@@ -66,7 +66,7 @@ const ContactPage = () => {
               <td>{contact.category}</td>
               <td>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-warning"
                   onClick={() => handleDelete(contact._id)}
                 >
                   Delete

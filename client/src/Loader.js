@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react';
-import { Backdrop, CircularProgress, Box } from "@mui/material";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const Loader = ({open,src}) => {
     const [progress, setProgress] = React.useState(0);
@@ -44,9 +46,9 @@ const Loader = ({open,src}) => {
           zIndex="2" // Ensure the image appears above the circular progress
         >
           <img
-            src={src?src:'assets/logo/Saran Tours & Travels Kumily Logo Rounded.png'}
+            src={src?src:'assets/img/logo/Logo.png'}
             alt="logo"
-            width={40} // Reduced image size
+            width={20} // Reduced image size
             style={{
               objectFit: "contain",
         
@@ -57,7 +59,7 @@ const Loader = ({open,src}) => {
           position="absolute"
           width="100%"
           height="100%"
-          bgcolor="rgba(13,34,89, 0.6)"
+          bgcolor="rgba(138, 116, 179, 0.6)"
           borderRadius="50%" // Ensure the background also has rounded corners
         />
       </Box>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/customhooks/common/Header/Header";
 import { client } from "../../components/clientaxios/Client";
+import Footer from "../../components/customhooks/common/footer/Footer";
 // import './pac.css'
 export default function PackageDet() {
   const [packageDetail, setPackageDetail] = useState(null);
@@ -46,6 +47,7 @@ export default function PackageDet() {
 
   return (
     <div>
+      <Header />
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">
@@ -247,6 +249,48 @@ export default function PackageDet() {
           </div>
         </div>
       </div>
+      <section className="w-full d-flex flex-column justify-content-center lg-h-800">
+        <div className="container w-full px-lg-5 px-0 py-5 py-xl-10">
+          <p className="text-color4 text-uppercase px-3 px-xl-5">
+            Days To Travel
+          </p>
+          <p className="text-3xl px-3 px-xl-5 font-secondary text-color1">
+            Travel <span className="text-color3">Description</span>
+          </p>
+          <div className="w-full d-flex flex-wrap py-5 py-xl-10 px-3 px-xl-0">
+            <div className="w-100 position-lg-relative grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3 gap-4 gap-md-6 text-left">
+              {/* Check if packageDetail.days is defined before mapping */}
+              {pacde.days ? (
+                pacde.days.map((day, index) => (
+                  <div
+                    key={index}
+                    className="d-flex flex-column justify-content-between align-items-center"
+                  >
+                    {/* Display day */}
+                    {/* <p className="text-lg font-bold text-right text-color3">Day {day.dayNumber}</p> */}
+                    {/* Display description */}
+                    <p className="text-lg text-color6  mt-4">
+                      <p className="text-lg font-bold text-color3">
+                        Day{day.dayNumber}
+                      </p>
+                      &nbsp; &nbsp; &nbsp; &nbsp;
+                      {day.description}
+                    </p>
+                    {/* Other content */}
+                    <div className="mt-6 d-flex justify-content-center align-items-center">
+                      {/* Add your buttons or links here */}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>No days available</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

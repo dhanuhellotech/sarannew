@@ -105,7 +105,7 @@ export default function Tobbar() {
               <input type="text" className="form-control" id="mailid" value={mailid} onChange={(e) => setMailid(e.target.value)} />
             </div>
             <div className="mb-3">
-              <button type="button" className="btn btn-primary"  onClick={handleFormSubmit}>
+              <button type="button" className="btn btn"  style={{backgroundColor:'#0D2259',color:'white'}} onClick={handleFormSubmit}>
                 {editingEntryId ? 'Update Tobbar' : 'Add Tobbar'}
               </button>
             </div>
@@ -122,7 +122,7 @@ export default function Tobbar() {
                 <p className="card-text">Number: {entry.number}</p>
                 <p className="card-text">Location: {entry.location}</p>
                 <p className="card-text">Mailid: {entry.mailid}</p>
-                <button className="btn btn-primary me-2" onClick={() => handleEditEntry(entry._id)}>Edit</button>
+                <button className="btn btn-warning me-2" onClick={() => handleEditEntry(entry._id)}>Edit</button>
                 &nbsp;     &nbsp;   
                 <button className="btn btn-info"  style={{ backgroundColor: '#6f42c1' }}  onClick={() => handleDelete(entry._id)}>Delete</button>
               </div>

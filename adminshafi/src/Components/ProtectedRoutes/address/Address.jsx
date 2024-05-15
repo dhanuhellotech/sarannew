@@ -112,7 +112,7 @@ const handleDelete = async (userId) => {
           <input type="text" className="form-control" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
         </div>
         <div className="mb-3">
-          <button type="button" className="btn btn-primary" onClick={handleFormSubmit}>
+          <button type="button" className="btn btn-warning" onClick={handleFormSubmit}>
             {editingUserId ? 'Update User' : 'Add User'}
           </button>
         </div>
@@ -126,8 +126,8 @@ const handleDelete = async (userId) => {
         <p className="card-text">Phone Number: {user.phoneNumber}</p>
         <p className="card-text">Email: {user.email}</p>
         <p className="card-text">Address: {user.address}</p>
-        <button className="btn btn-primary me-2" style={{margin:'10px'}} onClick={() => handleEditUser(user._id)}>Edit</button>
-        <button className="btn btn-info" style={{ backgroundColor: '#6f42c1' }} onClick={() => handleDelete(user._id)}>Delete</button>
+        <button className="btn btn me-2" style={{margin:'10px',backgroundColor:'#FBBC23'}} onClick={() => handleEditUser(user._id)}>Edit</button>
+        <button className="btn btn-info" style={{ backgroundColor: '#0D2259' }} onClick={() => handleDelete(user._id)}>Delete</button>
       </div>
     </div>
   </div>

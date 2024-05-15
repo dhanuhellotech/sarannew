@@ -113,7 +113,7 @@ const EnquiryPage = () => {
               <td>
                 <button
                   className="btn btn-info"
-                  style={{ backgroundColor: '#6f42c1',margin:'5px' }}
+                  style={{ backgroundColor: '#FBBC23',margin:'5px',color:'black' }}
                   onClick={() => handleDelete(enquiryData._id)}
                 >
                   Delete

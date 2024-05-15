@@ -99,9 +99,9 @@ export default function VehicleAdminPanel() {
                                 <td>{vehicle.address}</td>
                                 <td>{vehicle.phoneNumber}</td>
                                 <td>{vehicle.vehicleModel}</td>
-                                <td>{vehicle.pickUpDate}</td>
+                                <td>{vehicle.pickUpDate.split('T')[0]}</td>
                                 <td>
-                                    <button className="btn btn-danger" onClick={() => handleDeleteVehicleModel(vehicle._id)}>Delete</button>
+                                    <button className="btn btn-warning" onClick={() => handleDeleteVehicleModel(vehicle._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

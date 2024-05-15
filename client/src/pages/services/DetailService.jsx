@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../../components/clientaxios/Client";
+import Header from "../../components/customhooks/common/Header/Header";
+import Footer from "../../components/common/footer/Footer";
 export default function DetailService() {
 
   const { id } = useParams();
@@ -23,6 +25,7 @@ export default function DetailService() {
 
   return (
     <div>
+      <Header/>
             {loading ? (
         <div>Loading...</div>
       ) : (
@@ -48,6 +51,9 @@ export default function DetailService() {
   </div>
 </section>
     )}
+
     </div>
+
+
   )
 }

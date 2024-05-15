@@ -1,5 +1,7 @@
 import { Grid,} from "@mui/material";
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+
 import { Container, Row, Col } from 'react-bootstrap';
 import './home.css'
 import axios from 'axios'
@@ -7,22 +9,26 @@ import { client } from '../clientaxios/Clientaxios';
 
 const Home = () => {
   const [greeting, setGreeting] = useState('');
-  const [formDataList, setFormDataList] = useState([]);
-
+  const [tourForms, setTourForms] = useState([]);
+  const [readArray, setReadArray] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await client.get('/study');
-        setFormDataList(response.data);
-      } catch (error) {
-        console.error('Error fetching form data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
+    fetchTourForms();
+}, []);
+  const fetchTourForms = () => {
+    client.get('/tourform/get')
+        .then(response => {
+            setTourForms(response.data);
+            const read = Array(response.data.length).fill(false);
+            setReadArray(read);
+        })
+        .catch(error => console.error('Error fetching tour forms:', error));
+}; const handleRead = (index) => {
+  setReadArray(prev => {
+      const newArray = [...prev];
+      newArray[index] = !newArray[index];
+      return newArray;
+  });
+};
 
 
   useEffect(() => {
@@ -59,49 +65,34 @@ const Home = () => {
               <div className="container-fluid">
               <div className="container mt-4" style={{margin:'10px'}}>
 {/* <h4 >Admission Data</h4> */}
-      <table className="table table-striped table-bordered text-left">
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Father's Name</th>
-            <th>Father's Occupation</th>
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
-            <th>Marital Status</th>
-            <th>Nationality</th>
-            <th>Religion</th>
-            <th>Mother Tongue</th>
-            <th>Educational Qualification</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Courses</th>
-       
-          </tr>
-        </thead>
-        <tbody>
-          {formDataList.map(formData => (
-            <tr key={formData._id}>
-              <td>{formData.fullName}</td>
-              <td>{formData.fatherName}</td>
-              <td>{formData.fatherOccupation}</td>
-              <td>{formData.email}</td>
-              <td>{formData.dateOfBirth.split('T')[0]}</td>
-
-              <td>{formData.gender}</td>
-              <td>{formData.maritalStatus}</td>
-              <td>{formData.nationality}</td>
-              <td>{formData.religion}</td>
-              <td>{formData.motherTongue}</td>
-              <td>{formData.educationalQualification}</td>
-              <td>{formData.phoneNumber}</td>
-              <td>{formData.address}</td>
-              <td>{formData.courses.join(', ')}</td>
-        
-            </tr>
-          ))}
-        </tbody>
-      </table>
+<div className='table-responsive mt-3'>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Guest Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Tour Package</th>
+                            <th>Message</th>
+                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tourForms.map((tourForm, index) => (
+                            <tr key={tourForm._id}>
+                                <td>{tourForm.guestName}</td>
+                                <td>{tourForm.email}</td>
+                                <td>{tourForm.phoneNumber}</td>
+                                <td>{tourForm.tourPackage}</td>
+                                <td>{readArray[index] && tourForm.message}   <button className="btn btn-warning" onClick={() => handleRead(index)}>
+                                        {readArray[index] ? 'Hide Message' : 'Read Message'}
+                                    </button></td>
+                             
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
     </div>
     
 
